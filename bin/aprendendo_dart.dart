@@ -1,10 +1,10 @@
 
-void main(List<String> arguments) {
+void main() {
   
-  var nomes = ["Gustavo", "Vênus"];
+  var nomes = ["Jonas", "Martha", "Francisca", "Adam"];
 
   for (var nome in nomes) {
-  
-    print('Olá, ${nome}!');
+    
+    print("Olá" + nome + "!");
   }
 }
