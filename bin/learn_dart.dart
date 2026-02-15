@@ -3,9 +3,57 @@ import 'package:learn_dart/io.dart';
 
 void main() {
 
+  // fazCumprimentosDark();
+
+  // Comenta ano de origem
+
+  // => Sugestões de nomes - comunicam ideia do programa
+  // anoOrigem
+  // tempoAteOrigem
+  // ehPermitidoViajar
+
+  print("De que ano é você?");
+
+  String anoDigitado = readLine();
+  int anoInformado = int.parse(anoDigitado);
+
+  int diferenca = 2019 - anoInformado;
+
+  bool ehPermitido = diferenca % 33 == 0;
+
+  if (ehPermitido) {
+
+    print("Está na hora de voltar pra lá");
+  } 
+
+  else {
+
+    print("Como você veio parar aqui?");
+  }
+
+}
+
+// =====================================
+
+void fazCumprimentosDark() {
+
   var nomes = ["Magnus", "Michael", "Francisca", "Adam", "Eva"];
-  
+
   // Cumprimentar a todos
+
+  cumprimentarGeral(nomes);
+
+  // Te cumprimentar
+
+  print("E você? Qual é seu nome? ");
+  // var nomeInformado = readLine();
+  print("");
+
+  // Cumprimentar
+  cumprimentarNovoNome("Gustavo", nomes);
+}
+
+void cumprimentarGeral(List<String> nomes) {
 
   for (var nome in nomes) {
 
@@ -24,13 +72,10 @@ void main() {
       print("Olá, " + nome + "!");
     }
   }
+}
 
-  // Te cumprimentar
-
-  // Obter seu nome
-  var nomeInformado = input("E você? Qual é seu nome? ");
-  print("");
-
+void cumprimentarNovoNome(String nomeInformado, List<String> nomes) {
+  
   // Verificar se é conhecido
   bool ehConhecido = false;
 
@@ -63,35 +108,4 @@ void main() {
     }
   }
 
-  // Idade
-
-  String textoIdade = input("Qual sua idade? ");
-  int? idade = int.tryParse(textoIdade);
-
-  if (idade == null) {
-
-    print("Não entendi. Talvez ainda não saiba falar haha");
-  }
-
-  else {
-
-    if (idade < 18) {
-
-      print("Veja se não é um adolecente!");
-    }
-
-    else if (idade < 60) {
-
-      print("Temos um adulto aqui!");
-    }
-
-    else {
-
-      print("A terceira idade não é mole né?");
-    }
-  }
 }
-
-
-// ehConhecido
-// ehParente

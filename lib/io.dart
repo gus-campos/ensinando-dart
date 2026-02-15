@@ -1,6 +1,6 @@
 import 'dart:io';
 
-String input(String pergunta) {
-  stdout.write(pergunta);
+String readLine() {
+  stdout.write("> ");
   return stdin.readLineSync() ?? "";
 }
