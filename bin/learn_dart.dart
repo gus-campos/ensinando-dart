@@ -1,111 +1,168 @@
 
+import 'package:learn_dart/cumprimentos.dart';
 import 'package:learn_dart/io.dart';
+
+const int DURACAO_CICLO = 33;
+
+enum Epoca {
+    Ano2052,
+    Ano2019,
+    Ano1986,
+    Ano1953,
+    Ano1921,
+}
+
+enum Genero {
+    Homem,
+    Mulher,
+    NaoBinario,
+    Agenero,
+    Outro
+}
+
+List<String> nomes = [
+    "Martha",
+    "Jonas",
+    "Hanno",
+    "Claudia",
+    "Mikkel",
+    "Hannah",
+    "Elizabeth",
+    "Charlotte",
+    "Magnus",
+    "Franziska"
+];
+
+Map<String, String> pseudonimos = {
+    "Jonas": "Adam",
+    "Martha": "Eva",
+    "Hanno": "Noah",
+    "Claudia": "Diabo Branco",
+    "Mikkel": "Michael",
+    "Hannah": "Katharina"
+};
+
+Map<String, Genero> generoPersonagens = {
+    "Jonas": Genero.Homem,
+    "Martha": Genero.Mulher,
+    "Hanno": Genero.Homem,
+    "Claudia": Genero.Mulher,
+    "Mikkel": Genero.Homem,
+    "Hannah": Genero.Mulher
+};
+
+Map<String, Epoca> epocaPersonagens = {
+    "Jonas": Epoca.Ano2019,
+    "Martha": Epoca.Ano2019,
+    "Hanno": Epoca.Ano1921,
+    "Claudia": Epoca.Ano1953,
+    "Mikkel": Epoca.Ano2019,
+    "Hannah": Epoca.Ano1986
+};
 
 void main() {
 
-  // fazCumprimentosDark();
+    for (var nome in nomes) {    
+        
+        String nomeUsado = nome;
 
-  // Comenta ano de origem
+        // Se tiver apelido, usa o apelido
+        
+        String? pseudonimo = pseudonimos[nome];
 
-  // => Sugestões de nomes - comunicam ideia do programa
-  // anoOrigem
-  // tempoAteOrigem
-  // ehPermitidoViajar
+        if (pseudonimo != null) {
 
-  print("De que ano é você?");
+            nomeUsado = pseudonimo;
+        }
 
-  String anoDigitado = readLine();
-  int anoInformado = int.parse(anoDigitado);
+        String cumprimentoEpoca = geraComentarioEpoca(nome);
 
-  int diferenca = 2019 - anoInformado;
-
-  bool ehPermitido = diferenca % 33 == 0;
-
-  if (ehPermitido) {
-
-    print("Está na hora de voltar pra lá");
-  } 
-
-  else {
-
-    print("Como você veio parar aqui?");
-  }
-
-}
-
-// =====================================
-
-void fazCumprimentosDark() {
-
-  var nomes = ["Magnus", "Michael", "Francisca", "Adam", "Eva"];
-
-  // Cumprimentar a todos
-
-  cumprimentarGeral(nomes);
-
-  // Te cumprimentar
-
-  print("E você? Qual é seu nome? ");
-  // var nomeInformado = readLine();
-  print("");
-
-  // Cumprimentar
-  cumprimentarNovoNome("Gustavo", nomes);
-}
-
-void cumprimentarGeral(List<String> nomes) {
-
-  for (var nome in nomes) {
-
-    if (nome == "Adam") {
-
-      print("Olá, Jonas...");
+        print("Olá, ${nomeUsado}! " + cumprimentoEpoca);
     }
+}
 
-    else if (nome == "Eva") {
+String geraComentarioEpoca(String nome) {
 
-      print("Olá, Martha...");
+    Epoca? epoca = epocaPersonagens[nome];
+
+    if (epoca != null) {
+
+        if (epoca == Epoca.Ano2052) {
+        
+            return "Você é de quando a partícula da destruição estava escondida em muros!";
+        }
+
+        else if (epoca == Epoca.Ano2019) {
+
+            return "Você é de quando o Mikkel foi levado.";
+        }
+
+        else if (epoca == Epoca.Ano1986) {
+
+            return "Você é de quando ele descobriu que eu era o Diabo Branco!";
+        }
+
+        else if (epoca == Epoca.Ano1953) {
+
+            return "Você é de quando Hannah se tornou Katharina Nielsen.";
+        }
+
+        else if (epoca == Epoca.Ano1921) {
+
+            return "A passagem só seria aberta em 33 anos.";
+        }
+
+        throw new Exception("Valor inválido");
     }
 
     else {
 
-      print("Olá, " + nome + "!");
+        return "Você é a origem???";
     }
-  }
 }
 
-void cumprimentarNovoNome(String nomeInformado, List<String> nomes) {
-  
-  // Verificar se é conhecido
-  bool ehConhecido = false;
+void perguntaAno() {
 
-  for (var nome in nomes) {
 
-    if (nome == nomeInformado) {
+    print("De que ano é você?");
 
-      ehConhecido = true;
-    }
-  }
+    String input = readLine();
+    int anoPartida = int.parse(input);
 
-  // Cumprimentar
-  if (ehConhecido) {
+    int anosDesdePartida = 2019 - anoPartida;
 
-    print(nomeInformado + "? Outro de você aqui? Isso já perdendo o controle!");
-  }
+    int resto = anosDesdePartida % DURACAO_CICLO;
 
-  else {
+    bool viagemPermitida = resto == 0;
 
-    print("Olá, " + nomeInformado + ". Nunca te vi por aqui...");
+    if (viagemPermitida) {
+        
+        print("Está na hora de voltar pra lá");
+
+    } 
     
-    if (nomeInformado.contains("Tiedemann")) {
+    else {
 
-      print("Mas sinto que você já me conhece.");
-    }    
-  
-    else if (nomeInformado.length > 10) {
+        print(
+        "Agora você precisa esperar ${DURACAO_CICLO - resto} anos para voltar",
+        );
 
-      print("E eu tenho certeza que eu me lembraria desse nome.");
+        print("Mas você tem a partícula de Deus, sim, ou não?");
+        String input = readLine();
+
+        // Insistir até responder certo
+
+        while (input != "sim" && input != "não") {
+        print("Oi? Não entendi. É sim, ou não?");
+        input = readLine();
+        }
+
+        // Resposta válida
+
+        if (input == "sim") {
+        print("Então você já pode voltar agora");
+        } else if (input == "não") {
+        print("Então como você veio parar aqui?");
+        }
     }
-  }
-
 }
