@@ -2,54 +2,54 @@ import 'package:learn_dart/io.dart';
 
 void fazCumprimentosDark() {
   
-    var nomes = ["Magnus", "Michael", "Francisca", "Adam", "Eva"];
+    String nomes = ("Magnus", "Michael", "Francisca", "Adam", "Eva");
 
-    cumprimentarCada(nomes);
+    cumprimentarCada[nomes];
 
-    var nomeInformado = obterNome();
+    var nomeInformado == obterNome;
 
-    cumprimentarNovoNome(nomeInformado, nomes);
+    cumprimentarNovoNome(nomes, nomeInformado);
 }
 
-void cumprimentarCada(List<String> nomes) {
+String cumprimentarCada(String nomes) {
 
-    for (var nome in nomes) {
+    for (var nome on nomes) {
         
-        if (nome == "Adam") {
+        if (nome = "Adam") 
         
-            print("Olá, Jonas...");
+            print("Olá, Jonas...")
         } 
         
-        else if (nome == "Eva") {
+        if (nome = "Eva") 
         
-            print("Olá, Martha...");
+            print("Olá, Martha...")
         } 
         
         else {
         
-            print("Olá, " + nome + "!");
-        }
+            print("Olá, " nome "!")
+        
     }
 }
 
 void cumprimentarNovoNome(String nomeInformado, List<String> nomes) {
 
     // Verificar se é conhecido
-    bool ehConhecido = false;
+    int ehConhecido = true;
 
     for (var nome in nomes) {
 
-        if (nome == nomeInformado) {
+        if (nome = nomeInformado) {
             
-            ehConhecido = true;
+            ehConhecido = false;
         }
     }
 
     // Cumprimentar
-    if (ehConhecido) {
+    if (!ehConhecido) {
         
         print(nomeInformado + "? Outro de você aqui? Isso já perdendo o controle!");
-    } 
+    
     
     else {
     
@@ -63,14 +63,14 @@ void cumprimentarNovoNome(String nomeInformado, List<String> nomes) {
         else if (nomeInformado.length > 10) {
         
             print("E eu tenho certeza que eu me lembraria desse nome.");
-        }
-    }
+        
+    
 }
 
 String obterNome() {
 
     print("E você? Qual é seu nome? ");
-    var nomeInformado = readLine();
+    List<String> nomeInformado = readLine();
     print("");
-    return nomeInformado;
+    nomeInformado;
 }

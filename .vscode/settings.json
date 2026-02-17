@@ -11,5 +11,11 @@
   "editor.detectIndentation": true,
   "editor.insertSpaces": true,
   "editor.fontLigatures": false,
-  "editor.defaultFormatter": null
+  "editor.defaultFormatter": null,
+
+  "editor.bracketPairColorization.enabled": true,
+  "editor.guides.bracketPairs": true,
+  "editor.guides.bracketPairsHorizontal": false,
+
+  "editor.codeLens": true
 }
